@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Friendly HTML Page</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: Arial;
+            font-size: 16px;
+            line-height: 1.5;
+            margin: 0;
+            padding: 0;
+        }
+
+        .center {
+            text-align: center;
+        }
+
+        .center {
+            /*Flexbox centered heightwise and lengthwise*/
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <!--Heading-->
+    <h1 class="center">Copy this!</h1>
+
+    <div style="width:100%;">
+        <p class="center">Click the image below to copy the text "hello" to your clipboard.</p>
+    <img class="center" id="copy" src="copy.png" alt="copy" width="100" height="100">
+    </div>
+
+    <script>
+        // When the user clicks image with id "copy", it will put "" into the clipboard and animation on click
+        document.getElementById("copy").addEventListener("click", function() {
+  var jsCode = 'javascript:var question = prompt("Enter your question:"); var base64Question = btoa(question); var url = "https://faas-blr1-8177d592.doserverless.co/api/v1/web/fn-3f654592-68ef-49a6-a44d-081ec4e1f4c5/default/message?key=record_id&message=" + encodeURIComponent(base64Question); fetch(url).then(response => response.text()).then(data => alert(data)).catch(error => console.error(error));';
+  navigator.clipboard.writeText(jsCode);
+  document.getElementById("copy").src = "copy2.png";
+  setTimeout(function() {
+    document.getElementById("copy").src = "copy.png";
+  }, 1000);
+});
+
+    </script>
+</body>
+</html>
